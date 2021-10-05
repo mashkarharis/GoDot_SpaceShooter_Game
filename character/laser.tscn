@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fire.png" type="Texture" id=1]
+[ext_resource path="res://character/laser.gd" type="Script" id=2]
+
+[node name="laser" type="Area2D" groups=[
+"laser",
+]]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -6.89375, -29.6706, -13.3938, -17.6706, -10.6438, -5.17062, -8.39375, -1.67062, -8.64375, -11.1706, -5.39375, -13.9206, -4.89375, -7.42062, -5.14375, 0.0793839, -2.39375, 8.32938, 0.606247, 13.0794, 2.85625, 18.3294, 2.10625, 22.5794, 0.606247, 29.3294, -0.143753, 38.0794, 0.856247, 43.8294, 1.60625, 34.8294, 5.60625, 23.3294, 6.85625, 15.3294, 4.10625, 7.07938, 3.60625, -0.920616, 5.85625, -6.67062, 9.85625, -6.92062, 12.3562, -3.67062, 12.3562, -0.170616, 12.3562, 2.57938, 12.3562, 4.07938, 14.6062, -5.92062, 11.3562, -13.6706, 5.35625, -19.6706, 5.10625, -24.6706, 5.35625, -26.6706, 8.10625, -26.6706, 10.6062, -24.4206, 12.3562, -23.9206, 7.35625, -31.4206, 2.35625, -34.1706, -2.89375, -33.1706 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="fire" type="Sprite" parent="Sprite"]
+position = Vector2( 0.945374, 5.55304 )
+rotation = 3.14159
+scale = Vector2( 0.0801554, 0.0623475 )
+texture = ExtResource( 1 )
+
+[connection signal="area_entered" from="." to="." method="_on_laser_area_entered"]
