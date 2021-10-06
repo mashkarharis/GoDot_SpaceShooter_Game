@@ -1,9 +1,13 @@
 extends Area2D
 
-export (int) var speed=150
+export (int) var speed=500
 var health=1
+signal reduce_health(delta_health)
+
+
 func _physics_process(delta):
 	global_position.y+=speed*delta
+	
 	
 func _take_damage(damage):
 	health-=damage
@@ -18,3 +22,8 @@ func _on_enemy_area_entered(area):
 		area._take_damage(1)
 	if area.is_in_group('laser'):
 		area._destroy()
+	if area.is_in_group('barrier'):
+		print("IN")
+		emit_signal('reduce_health',1)
+		queue_free()
+		
