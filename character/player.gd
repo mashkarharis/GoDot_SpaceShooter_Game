@@ -25,6 +25,7 @@ func reduce_health(delta_health):
 	health-=delta_health
 	if health<=0:
 		queue_free()
+		get_tree().change_scene("res://character/GameOver.tscn")
 
 func _take_damage(damage):
 	reduce_health(damage)
